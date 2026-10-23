@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explorar destinos | Horizon</title>
+  <meta name="description" content="Busca países y capitales, y filtra por región e idioma.">
+  <meta name="theme-color" content="#1b3a5c">
+  <link rel="icon" type="image/png" href="assets/img/mascota.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="">
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.2.8 3.5 2.8 3.5 5.5"/></symbol><symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></symbol><symbol id="i-bookmark" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16Z"/></symbol><symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol><symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol><symbol id="i-dots" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="19" r="1.4" fill="currentColor"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></symbol><symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></symbol><symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol><symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></symbol><symbol id="i-cloud-sun" viewBox="0 0 24 24"><path d="M12 2v2M4.9 4.9l1.4 1.4M2 12h2M20 12h2M17.7 6.3l1.4-1.4"/><path d="M15.9 12.1a4 4 0 0 0-7.7-.9"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"/></symbol><symbol id="i-cloud-rain" viewBox="0 0 24 24"><path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.5 8.2"/><path d="M16 14v6M8 14v6M12 16v6"/></symbol><symbol id="i-wind" viewBox="0 0 24 24"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2"/></symbol><symbol id="i-thermometer" viewBox="0 0 24 24"><path d="M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0Z"/></symbol><symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-12-7-12S5 11 5 15a7 7 0 0 0 7 7Z"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5Z"/></symbol><symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2c-.6-.8-1.6-1.2-2.8-1.2-1.7 0-2.8.8-2.8 2 0 3 5.6 1.5 5.6 4.2 0 1.2-1.2 2-2.8 2-1.3 0-2.4-.5-3-1.4M12 6.5V8m0 8v1.5"/></symbol><symbol id="i-language" viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></symbol><symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2 3 7h18ZM3 18h18"/></symbol><symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 22v-6"/><path d="M12 16c4 0 7-3 7-6.5S15.5 3 12 3 5 6 5 9.5 8 16 12 16Z"/></symbol><symbol id="i-museum" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M2.5 10 12 4l9.5 6Z"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2Z"/><path d="M9 4v14M15 6v14"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9Z"/></symbol><symbol id="i-external" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol><symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></symbol><symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6a2 2 0 0 0 2 2h3Zm0 0v7"/></symbol><symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9ZM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/></symbol></svg>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="container navbar">
+    <a class="navbar__brand" href="index.html" aria-label="Horizon, ir al inicio">
+      <img src="assets/img/logo-mark.png" alt="" width="191" height="99">
+      <span>Horizon</span>
+    </a>
+    <nav class="navbar__menu" id="nav-menu" aria-label="Navegación principal"><a class="navbar__link" href="index.html">Inicio</a><a class="navbar__link is-active" href="explorar.html" aria-current="page">Explorar destinos</a><a class="navbar__link" href="favoritos.html">Favoritos</a><a class="navbar__link" href="mis-viajes.html">Mi itinerario</a><a class="navbar__link" href="acerca-de.html">Acerca de</a></nav>
+    <div class="navbar__actions has-menu">
+      <button class="icon-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="user-menu" aria-haspopup="true" aria-label="Abrir menú de usuario"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user"/></svg></button>
+      <div class="menu" id="user-menu" hidden>
+        <a class="menu__item" href="index.html#acceso"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg>Iniciar sesión</a>
+        <a class="menu__item" href="favoritos.html"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg>Mis favoritos</a>
+        <a class="menu__item" href="mis-viajes.html"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-briefcase"/></svg>Mis viajes</a>
+        <div class="menu__sep" role="separator"></div>
+        <a class="menu__item" href="crear-viaje.html"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg>Crear un viaje</a>
+      </div>
+      <button class="icon-btn navbar__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú de navegación"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="contenido">
+
+<div class="container">
+  <header class="page-head">
+    <nav class="breadcrumb" aria-label="Migas de pan">
+      <a href="explorar.html">Explorar</a><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg><span aria-current="page">Resultados de búsqueda</span>
+    </nav>
+    <h1 style="margin-top:12px">Explorar destinos</h1>
+    <p>Encuentra tu próximo destino por país o capital y reduce los resultados con los filtros.</p>
+  </header>
+
+  <form class="card filters" id="filters-form" role="search" novalidate>
+    <div class="field">
+      <label class="sr-only" for="f-q">Buscar destino</label>
+      <div class="field__control"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-search"/></svg><input class="input" id="f-q" type="search" placeholder="Busca un país o una capital…" autocomplete="off"></div>
+    </div>
+    <div class="filters__row">
+      <div class="field"><label class="field__label" for="f-region">Región</label>
+        <div class="field__control field__control--select"><select class="select" id="f-region"><option value="">Todas</option><option value="Américas">Américas</option><option value="Europa">Europa</option><option value="Asia">Asia</option><option value="África">África</option></select></div></div>
+      <div class="field"><label class="field__label" for="f-lang">Idioma</label>
+        <div class="field__control field__control--select"><select class="select" id="f-lang"><option value="">Todos</option><option value="Alemán">Alemán</option><option value="Español">Español</option><option value="Francés">Francés</option><option value="Inglés">Inglés</option><option value="Italiano">Italiano</option><option value="Japonés">Japonés</option><option value="Portugués">Portugués</option><option value="Tailandés">Tailandés</option><option value="Árabe">Árabe</option></select></div></div>
+      <div class="field"><label class="field__label" for="f-sort">Ordenar por</label>
+        <div class="field__control field__control--select"><select class="select" id="f-sort">
+          <option value="name">Nombre (A–Z)</option><option value="pop-desc">Más población</option><option value="pop-asc">Menos población</option></select></div></div>
+      <button class="btn btn--outline" type="button" data-clear-filters>Limpiar filtros</button>
+    </div>
+  </form>
+
+  <div class="results-bar">
+    <p aria-live="polite"><strong id="result-count">15</strong> destinos encontrados</p>
+  </div>
+
+  <div class="results-list" id="results-list">
+<article class="dest-row" data-name="España" data-capital="Madrid" data-region="Europa" data-pop="47400000" data-langs="Español">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-es.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/es.svg" alt="Bandera de España" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">España</a></h3>
+    <p class="dest-row__sub">Capital: Madrid</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Europa</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>47,4 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Español</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar España a favoritos" data-name="España" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Japón" data-capital="Tokio" data-region="Asia" data-pop="125700000" data-langs="Japonés">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-jp.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/jp.svg" alt="Bandera de Japón" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Japón</a></h3>
+    <p class="dest-row__sub">Capital: Tokio</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Asia</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>125,7 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Japonés</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Japón a favoritos" data-name="Japón" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Italia" data-capital="Roma" data-region="Europa" data-pop="58900000" data-langs="Italiano">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-it.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/it.svg" alt="Bandera de Italia" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Italia</a></h3>
+    <p class="dest-row__sub">Capital: Roma</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Europa</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>58,9 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Italiano</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Italia a favoritos" data-name="Italia" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Colombia" data-capital="Bogotá" data-region="Américas" data-pop="52100000" data-langs="Español">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-co.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/co.svg" alt="Bandera de Colombia" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Colombia</a></h3>
+    <p class="dest-row__sub">Capital: Bogotá</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Américas</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>52,1 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Español</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Colombia a favoritos" data-name="Colombia" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Canadá" data-capital="Ottawa" data-region="Américas" data-pop="38900000" data-langs="Inglés,Francés">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-ca.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/ca.svg" alt="Bandera de Canadá" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Canadá</a></h3>
+    <p class="dest-row__sub">Capital: Ottawa</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Américas</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>38,9 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Inglés y Francés</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Canadá a favoritos" data-name="Canadá" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Francia" data-capital="París" data-region="Europa" data-pop="68000000" data-langs="Francés">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-fr.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/fr.svg" alt="Bandera de Francia" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Francia</a></h3>
+    <p class="dest-row__sub">Capital: París</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Europa</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>68,0 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Francés</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Francia a favoritos" data-name="Francia" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="México" data-capital="Ciudad de México" data-region="Américas" data-pop="128900000" data-langs="Español">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-mx.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/mx.svg" alt="Bandera de México" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">México</a></h3>
+    <p class="dest-row__sub">Capital: Ciudad de México</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Américas</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>128,9 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Español</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar México a favoritos" data-name="México" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Brasil" data-capital="Brasilia" data-region="Américas" data-pop="213400000" data-langs="Portugués">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-br.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/br.svg" alt="Bandera de Brasil" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Brasil</a></h3>
+    <p class="dest-row__sub">Capital: Brasilia</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Américas</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>213,4 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Portugués</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Brasil a favoritos" data-name="Brasil" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Argentina" data-capital="Buenos Aires" data-region="Américas" data-pop="45800000" data-langs="Español">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-ar.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/ar.svg" alt="Bandera de Argentina" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Argentina</a></h3>
+    <p class="dest-row__sub">Capital: Buenos Aires</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Américas</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>45,8 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Español</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Argentina a favoritos" data-name="Argentina" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Perú" data-capital="Lima" data-region="Américas" data-pop="33700000" data-langs="Español">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-pe.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/pe.svg" alt="Bandera de Perú" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Perú</a></h3>
+    <p class="dest-row__sub">Capital: Lima</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Américas</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>33,7 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Español</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Perú a favoritos" data-name="Perú" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Portugal" data-capital="Lisboa" data-region="Europa" data-pop="10300000" data-langs="Portugués">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-pt.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/pt.svg" alt="Bandera de Portugal" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Portugal</a></h3>
+    <p class="dest-row__sub">Capital: Lisboa</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Europa</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>10,3 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Portugués</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Portugal a favoritos" data-name="Portugal" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Alemania" data-capital="Berlín" data-region="Europa" data-pop="83200000" data-langs="Alemán">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-de.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/de.svg" alt="Bandera de Alemania" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Alemania</a></h3>
+    <p class="dest-row__sub">Capital: Berlín</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Europa</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>83,2 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Alemán</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Alemania a favoritos" data-name="Alemania" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Chile" data-capital="Santiago" data-region="Américas" data-pop="19500000" data-langs="Español">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-cl.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/cl.svg" alt="Bandera de Chile" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Chile</a></h3>
+    <p class="dest-row__sub">Capital: Santiago</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Américas</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>19,5 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Español</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Chile a favoritos" data-name="Chile" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Tailandia" data-capital="Bangkok" data-region="Asia" data-pop="71800000" data-langs="Tailandés">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-th.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/th.svg" alt="Bandera de Tailandia" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Tailandia</a></h3>
+    <p class="dest-row__sub">Capital: Bangkok</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Asia</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>71,8 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Tailandés</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Tailandia a favoritos" data-name="Tailandia" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article>
+<article class="dest-row" data-name="Marruecos" data-capital="Rabat" data-region="África" data-pop="37100000" data-langs="Árabe">
+  <a class="dest-row__media" href="detalle.html" tabindex="-1" aria-hidden="true">
+    <img src="assets/img/cover-ma.svg" alt="" width="800" height="500" loading="lazy">
+    <span class="flag-chip"><img src="assets/flags/ma.svg" alt="Bandera de Marruecos" width="60" height="40" loading="lazy"></span>
+  </a>
+  <div class="dest-row__body">
+    <h3 class="dest-row__title"><a href="detalle.html">Marruecos</a></h3>
+    <p class="dest-row__sub">Capital: Rabat</p>
+    <ul class="meta-list">
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>África</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>37,1 M hab.</li>
+      <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-language"/></svg>Árabe</li>
+    </ul>
+  </div>
+  <div class="dest-row__actions">
+    <button class="btn btn--ghost btn--sm fav-btn" type="button" aria-pressed="false" aria-label="Agregar Marruecos a favoritos" data-name="Marruecos" data-text-on="Guardado" data-text-off="Favorito"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="fav-btn__text">Favorito</span></button>
+    <a class="btn btn--primary btn--sm" href="detalle.html">Ver detalles</a>
+    <svg class="icon dest-row__chev" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
+  </div>
+</article></div>
+
+  <div class="empty-state" id="results-empty" hidden>
+    <img src="assets/img/mascota.png" alt="" width="110" height="107">
+    <h2>No encontramos destinos con esos filtros</h2>
+    <p>Revisa la ortografía o prueba con otra región o idioma. También puedes empezar de nuevo.</p>
+    <button class="btn btn--primary" type="button" data-clear-filters>Limpiar filtros</button>
+  </div>
+
+  <div class="load-more" id="load-more"><button class="btn btn--outline" type="button" data-load-more>Cargar más destinos</button></div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="navbar__brand" href="index.html"><img src="assets/img/logo-mark.png" alt="" width="191" height="99"><span>Horizon</span></a>
+        <p>Disfruta y viaja fácil. Explora destinos, revisa el clima y organiza tu viaje en un solo lugar.</p>
+      </div>
+      <div>
+        <h2 class="footer__title">Explora</h2>
+        <ul class="footer__links">
+          <li><a href="explorar.html">Explorar destinos</a></li>
+          <li><a href="destinos.html">Buscar un país</a></li>
+          <li><a href="favoritos.html">Mis favoritos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Planifica</h2>
+        <ul class="footer__links">
+          <li><a href="mis-viajes.html">Mis viajes</a></li>
+          <li><a href="crear-viaje.html">Crear un viaje</a></li>
+          <li><a href="itinerario.html">Mi itinerario</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Proyecto</h2>
+        <ul class="footer__links">
+          <li><a href="acerca-de.html">Acerca de Horizon</a></li>
+          <li><a href="acerca-de.html#datos">Fuentes de datos</a></li>
+          <li><a href="acerca-de.html#preguntas">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Horizon. Proyecto académico de Electiva Disciplinar I.</p>
+      <p>Datos de ejemplo. Fuentes previstas: REST Countries, Open-Meteo y OpenStreetMap.</p>
+    </div>
+  </div>
+</footer>
+<div class="toast-region" id="toast-region" role="status" aria-live="polite"></div>
+<script src="js/main.js" defer></script>
+</body>
+</html>

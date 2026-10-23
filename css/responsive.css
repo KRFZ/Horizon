@@ -1,0 +1,372 @@
+/* ==========================================================================
+   HORIZON · responsive.css
+   Ajustes para pantallas medianas y pequeñas (se carga al final).
+   ========================================================================== */
+
+/* ---------- Portátiles pequeños / tablets horizontales ---------- */
+@media (max-width: 1100px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .itinerary {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.8fr);
+    gap: var(--space-5);
+  }
+
+  .split {
+    gap: var(--space-6);
+  }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 900px) {
+  :root {
+    --header-h: 64px;
+  }
+
+  .section {
+    padding-block: var(--space-7);
+  }
+
+  /* Navbar colapsable */
+  .navbar__toggle.icon-btn {
+    display: inline-grid;
+  }
+
+  .navbar__brand {
+    margin-right: auto;
+  }
+
+  .navbar__actions {
+    margin-left: 0;
+  }
+
+  .navbar__menu {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    margin: 0;
+    padding: var(--space-3) 1.25rem var(--space-5);
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+  }
+
+  .navbar__menu[hidden] {
+    display: none;
+  }
+
+  .navbar__link {
+    padding: 12px 16px;
+    border-radius: var(--r-md);
+  }
+
+  /* Inicio */
+  .hero {
+    padding-bottom: 170px;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .login-card {
+    max-width: 480px;
+  }
+
+  .hero__path {
+    display: none;
+  }
+
+  .quick-search__form {
+    grid-template-columns: 1fr;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .steps::before {
+    display: none;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .feature:nth-child(even) {
+    transform: none;
+  }
+
+  .cta-band {
+    grid-template-columns: 1fr;
+    padding: var(--space-6);
+  }
+
+  .cta-band__mascot {
+    display: none;
+  }
+
+  /* Exploración */
+  .hub-grid,
+  .grid-3,
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-card {
+    min-height: 0;
+  }
+
+  .filters__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filters__row .btn {
+    grid-column: 1 / -1;
+  }
+
+  /* Detalle */
+  .detail-hero__main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .info-grid,
+  .weather,
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast {
+    grid-template-columns: repeat(5, minmax(120px, 1fr));
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+  }
+
+  /* Itinerario */
+  .itinerary {
+    grid-template-columns: 1fr;
+  }
+
+  .itinerary__aside {
+    position: static;
+  }
+
+  /* Acerca de */
+  .about-hero {
+    grid-template-columns: 1fr;
+    padding-block: var(--space-7);
+  }
+
+  .about-hero__art {
+    min-height: 240px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Móviles ---------- */
+@media (max-width: 640px) {
+  :root {
+    --space-8: 56px;
+    --space-9: 72px;
+  }
+
+  .container {
+    width: min(100% - 2rem, var(--container));
+  }
+
+  .section-head--row,
+  .page-head__row,
+  .results-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-head__row > .btn {
+    width: 100%;
+  }
+
+  .navbar__brand span {
+    font-size: 1.2rem;
+  }
+
+  /* Inicio */
+  .hero {
+    padding-top: var(--space-6);
+  }
+
+  .hero__intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__mascot {
+    width: 118px;
+  }
+
+  .hero__cta .btn {
+    flex: 1 1 100%;
+  }
+
+  .hero__landscape {
+    height: 140px;
+  }
+
+  .hero__sun {
+    left: 50%;
+    width: 160px;
+    margin-left: -80px;
+  }
+
+  .quick-search {
+    margin-top: -56px;
+  }
+
+  .quick-search__chips {
+    padding-left: 0;
+  }
+
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tarjetas horizontales -> verticales */
+  .dest-row,
+  .fav-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+
+  .dest-row__media {
+    width: 100%;
+    height: 150px;
+  }
+
+  .dest-row__actions {
+    justify-content: space-between;
+    padding-bottom: 4px;
+  }
+
+  .dest-row__actions .btn--primary {
+    flex: 1;
+  }
+
+  .dest-row__chev {
+    display: none;
+  }
+
+  .filters__row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Detalle */
+  .detail-hero__id {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .detail-hero__actions {
+    width: 100%;
+  }
+
+  .detail-hero__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .facts {
+    grid-template-columns: 1fr;
+    margin-top: -44px;
+  }
+
+  .tab {
+    padding: 12px 14px;
+  }
+
+  .weather-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Viajes y formulario */
+  .trip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card {
+    padding: var(--space-5);
+    border-radius: var(--r-lg);
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .form-card__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Itinerario */
+  .day {
+    padding: var(--space-4);
+  }
+
+  .activity {
+    grid-template-columns: 1fr auto;
+  }
+
+  .activity__time {
+    grid-column: 1 / -1;
+  }
+
+  .add-activity {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modal__footer {
+    flex-direction: column-reverse;
+  }
+}
