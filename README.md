@@ -4,7 +4,7 @@ Aplicación web **frontend** (HTML, CSS y JavaScript) para explorar países, con
 guardar destinos favoritos y organizar un itinerario de viaje.
 Proyecto académico de Electiva Disciplinar I· Corporación Universitaria Latinoamericana - CUL.
 
-**Web publicada:** _([pega aquí el enlace de GitHub Pages](https://krfz.github.io/Horizon/))_
+**Web publicada:** _([Enlace de GitHub Pages](https://krfz.github.io/Horizon/))_
 
 ## APIs públicas utilizadas
 | API | Para qué se usa |
