@@ -10,7 +10,7 @@
 (function () {
   "use strict";
 
-  const { apis, listFields, cacheTtl, regionNames } = HZ.config;
+  const { apis, cacheTtl, regionNames } = HZ.config;
   const { norm, capitalize, sleep } = HZ.utils;
   const cache = HZ.storage.cache;
 
@@ -69,11 +69,11 @@
   /* ------------------------------------------------------------------
      fetch con límite de tiempo
      ------------------------------------------------------------------ */
-  async function fetchJSON(url, timeout = 12000) {
+  async function fetchJSON(url, timeout = 12000, options = {}) {
     const controller = new AbortController(); // permite cancelar la petición si tarda demasiado
     const timer = setTimeout(() => controller.abort(), timeout);
     try {
-      const response = await fetch(url, { signal: controller.signal });
+      const response = await fetch(url, { ...options, signal: controller.signal });
       if (!response.ok) {
         const failure = new Error(`Error ${response.status} al consultar el servicio`);
         failure.status = response.status;
@@ -93,43 +93,85 @@
      ------------------------------------------------------------------ */
   /* Convierte la respuesta de la API a un objeto simple con los datos ya traducidos */
   function normalizeCountry(raw) {
+    const names = raw.names || {};
+    const translations = names.translations || {};
+    const spanish = translations.spa || translations.es || Object.values(translations).find((item) => item && /spanish|español/i.test(item.language || item.name || ""));
+    const nameEn = names.common || names.official || "País sin nombre";
+    const name = (spanish && (spanish.common || spanish.official)) || nameEn;
+
+    const capitals = Array.isArray(raw.capitals) ? raw.capitals : [];
+    const capitalObject = capitals.find((item) => item && item.attributes && item.attributes.primary) || capitals[0] || {};
+    const capitalEn = capitalObject.name || "";
+    const capitalCoords = capitalObject.coordinates;
+    const countryCoords = raw.coordinates || {};
+    const latlng = capitalCoords && Number.isFinite(Number(capitalCoords.lat)) && Number.isFinite(Number(capitalCoords.lng))
+      ? [Number(capitalCoords.lat), Number(capitalCoords.lng)]
+      : Number.isFinite(Number(countryCoords.lat)) && Number.isFinite(Number(countryCoords.lng))
+        ? [Number(countryCoords.lat), Number(countryCoords.lng)] : null;
+
+    const languages = Array.isArray(raw.languages)
+      ? raw.languages.map((item) => item && (item.name || item.english_name || item.native_name)).filter(Boolean)
+      : raw.languages && typeof raw.languages === "object"
+        ? Object.values(raw.languages).map((item) => typeof item === "string" ? item : item && (item.name || item.english_name)).filter(Boolean)
+        : [];
+
+    const currenciesRaw = raw.currencies || {};
+    const currencies = Array.isArray(currenciesRaw)
+      ? currenciesRaw.map((item) => ({ code: item.code || "", name: item.name || item.code || "", symbol: item.symbol || "" }))
+      : Object.entries(currenciesRaw).map(([code, info]) => ({
+          code, name: (info && (info.name || info.english_name)) || code, symbol: (info && info.symbol) || ""
+        }));
+
     const regionEn = raw.region || "";
-    const capitalEn = Array.isArray(raw.capital) && raw.capital.length ? raw.capital[0] : "";
-    const spanish = raw.translations && raw.translations.spa;
-    const name = (spanish && spanish.common) || raw.name.common;
-
-    const capitalCoords = raw.capitalInfo && raw.capitalInfo.latlng;
-    const latlng = capitalCoords && capitalCoords.length === 2 ? capitalCoords : raw.latlng && raw.latlng.length === 2 ? raw.latlng : null;
-
-    const idd = raw.idd && raw.idd.root ? raw.idd.root + (raw.idd.suffixes && raw.idd.suffixes.length === 1 ? raw.idd.suffixes[0] : "") : "";
+    const alpha2 = raw.codes && raw.codes.alpha_2;
+    const callingCodes = Array.isArray(raw.calling_codes) ? raw.calling_codes : [];
+    const tlds = Array.isArray(raw.tlds) ? raw.tlds : [];
+    const area = raw.area && typeof raw.area === "object" ? raw.area.kilometers : raw.area;
 
     return {
-      code: raw.cca2,
+      code: alpha2 || "",
       name,
-      nameEn: raw.name.common,
-      official: (spanish && spanish.official) || raw.name.official || name,
+      nameEn,
+      official: (spanish && spanish.official) || names.official || name,
       capital: capitalEn ? CAPITALS_ES[capitalEn] || capitalEn : "",
       capitalEn,
       region: regionNames[regionEn] || regionEn,
       regionEn,
       subregion: SUBREGIONS_ES[raw.subregion] || raw.subregion || "",
-      population: raw.population || 0,
-      area: raw.area || 0,
-      languages: raw.languages ? Object.entries(raw.languages).map(([code, label]) => translate(languageNames, code, label)) : [],
-      currencies: raw.currencies
-        ? Object.entries(raw.currencies).map(([code, info]) => ({
-            code,
-            name: translate(currencyNames, code, info && info.name),
-            symbol: (info && info.symbol) || "",
-          }))
-        : [],
-      flag: (raw.flags && (raw.flags.svg || raw.flags.png)) || "",
+      population: Number(raw.population) || 0,
+      area: Number(area) || 0,
+      languages: [...new Set(languages.map((label) => translate(languageNames, label, label)))],
+      currencies,
+      flag: (raw.flag && (raw.flag.url_svg || raw.flag.url_png)) || "",
       flagAlt: `Bandera de ${name}`,
       latlng,
-      timezones: raw.timezones || [],
-      tld: (raw.tld && raw.tld[0]) || "",
-      callingCode: idd,
+      timezones: Array.isArray(raw.timezones) ? raw.timezones : [],
+      tld: tlds[0] || "",
+      callingCode: callingCodes.length ? callingCodes.map((code) => code.startsWith("+") ? code : `+${code}`).join(" / ") : "",
     };
+  }
+
+  function countriesRequestOptions() {
+    const key = String(HZ.config.countriesApiKey || "").trim();
+    if (!key || key === "PEGA_AQUI_TU_API_KEY") {
+      throw new Error("Falta configurar la API key de REST Countries en js/config.js");
+    }
+    return { headers: { Authorization: `Bearer ${key}` } };
+  }
+
+  async function fetchCountriesPage(offset, limit = 100) {
+    const params = new URLSearchParams({
+      limit: String(limit),
+      offset: String(offset),
+      response_fields: HZ.config.countriesResponseFields,
+    });
+    const payload = await fetchJSON(`${apis.countries}?${params}`, 15000, countriesRequestOptions());
+    if (payload && Array.isArray(payload.errors) && payload.errors.length) {
+      throw new Error(payload.errors[0].message || "REST Countries devolvió un error");
+    }
+    const objects = payload && payload.data && payload.data.objects;
+    if (!Array.isArray(objects)) throw new Error("La respuesta de REST Countries v5 no contiene data.objects");
+    return { objects, meta: payload.data.meta || {} };
   }
 
   /* Respaldo local: si REST Countries no responde se usa data/paises-respaldo.json */
@@ -148,17 +190,27 @@
 
   /* Devuelve todos los países. "source" indica de dónde salieron: api, cache o respaldo */
   async function getCountries() {
-    const cached = cache.get("countries.v1");
+    const cached = cache.get("countries.v5");
     if (cached) return { countries: cached, source: "cache" };
 
     try {
-      const raw = await fetchJSON(`${apis.countries}/all?fields=${listFields}`);
-      if (!Array.isArray(raw) || raw.length === 0) throw new Error("La API devolvió una respuesta vacía");
-      const countries = raw.filter((item) => item && item.cca2 && item.name).map(normalizeCountry).sort(byName);
-      cache.set("countries.v1", countries, cacheTtl.countries);
+      const countriesRaw = [];
+      let offset = 0;
+      let more = true;
+      while (more) {
+        const page = await fetchCountriesPage(offset, 100);
+        countriesRaw.push(...page.objects);
+        more = Boolean(page.meta.more);
+        offset += page.objects.length;
+        if (page.objects.length === 0) break;
+      }
+      if (!countriesRaw.length) throw new Error("La API devolvió una respuesta vacía");
+      const countries = countriesRaw.filter((item) => item && item.codes && item.codes.alpha_2 && item.names)
+        .map(normalizeCountry).sort(byName);
+      cache.set("countries.v5", countries, cacheTtl.countries);
       return { countries, source: "api" };
     } catch (error) {
-      console.warn("REST Countries no está disponible, se usan los datos de respaldo:", error.message);
+      console.warn("REST Countries v5 no está disponible, se usan los datos de respaldo:", error.message);
       const countries = (await loadBackup()).slice().sort(byName);
       return { countries, source: "respaldo" };
     }
@@ -169,15 +221,21 @@
     code = String(code || "").trim().toUpperCase();
     if (!/^[A-Z]{2,3}$/.test(code)) throw new Error("Código de país no válido");
 
-    const cached = cache.get(`country.${code}`);
+    const cached = cache.get(`country.v5.${code}`);
     if (cached) return cached;
 
     try {
-      const raw = await fetchJSON(`${apis.countries}/alpha/${encodeURIComponent(code)}`);
-      const item = Array.isArray(raw) ? raw[0] : raw;
-      if (!item || !item.cca2) throw new Error("No encontramos ese país");
+      const params = new URLSearchParams({ response_fields: HZ.config.countriesResponseFields });
+      const payload = await fetchJSON(`${apis.countries}/codes.alpha_2/${encodeURIComponent(code)}?${params}`, 12000, countriesRequestOptions());
+      if (payload && Array.isArray(payload.errors) && payload.errors.length) {
+        const apiError = new Error(payload.errors[0].message || "Error de REST Countries");
+        apiError.status = payload.errors[0].status || 0;
+        throw apiError;
+      }
+      const item = payload && payload.data && Array.isArray(payload.data.objects) ? payload.data.objects[0] : null;
+      if (!item || !item.codes || !item.codes.alpha_2) throw new Error("No encontramos ese país");
       const country = normalizeCountry(item);
-      cache.set(`country.${code}`, country, cacheTtl.country);
+      cache.set(`country.v5.${code}`, country, cacheTtl.country);
       return country;
     } catch (error) {
       const backup = await loadBackup().then((list) => list.find((item) => item.code === code)).catch(() => null);

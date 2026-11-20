@@ -16,15 +16,23 @@ window.HZ = window.HZ || {};
   HZ.config = {
     /* APIs públicas y gratuitas (no requieren clave) */
     apis: {
-      countries: "https://restcountries.com/v3.1", // REST Countries: información de países
+      countries: "https://api.restcountries.com/countries/v5", // REST Countries v5: información de países
       geocoding: "https://nominatim.openstreetmap.org/search", // OpenStreetMap Nominatim: nombre de ciudad -> coordenadas
       weather: "https://api.open-meteo.com/v1/forecast", // Open-Meteo: clima actual y pronóstico
       osmEmbed: "https://www.openstreetmap.org/export/embed.html", // Mapa incrustado
       osmView: "https://www.openstreetmap.org/",
     },
 
-    /* La lista completa de países exige indicar los campos (máximo 10) */
-    listFields: "name,cca2,capital,region,population,flags,languages,translations",
+
+    countriesApiKey: "rc_live_bc1b18d2b30741f482ef0d640fd746db",
+
+    /* Campos utilizados por HORIZON en el esquema de REST Countries v5. */
+    countriesResponseFields: [
+      "names.common", "names.official", "names.translations", "codes.alpha_2",
+      "capitals", "region", "subregion", "population", "area.kilometers",
+      "languages", "currencies", "flag.url_svg", "flag.url_png",
+      "coordinates.lat", "coordinates.lng", "timezones", "tlds", "calling_codes"
+    ].join(","),
 
     /* Claves con las que se guarda la información en el navegador */
     keys: {
