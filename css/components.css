@@ -1141,3 +1141,90 @@ button.chip:hover {
   gap: var(--space-4);
   margin-bottom: var(--space-4);
 }
+
+/* ---------- Estados de carga y avisos (tercer corte) ---------- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(100deg, #e6eef6 30%, #f4f8fc 50%, #e6eef6 70%);
+  background-size: 220% 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skeleton--card {
+  min-height: 330px;
+}
+
+.skeleton--row {
+  min-height: 128px;
+}
+
+.skeleton--day {
+  min-height: 170px;
+}
+
+.skeleton--block {
+  min-height: 320px;
+  border-radius: var(--r-xl);
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  grid-column: 1 / -1;
+  padding: 14px 18px;
+  font-weight: 600;
+  color: var(--navy-800);
+  background: var(--sky-100);
+  border: 1px solid var(--sky-200);
+  border-radius: var(--r-md);
+}
+
+.status-banner p {
+  flex: 1;
+}
+
+.status-banner .icon {
+  color: var(--teal-700);
+}
+
+.status-banner--error {
+  color: #7d2020;
+  background: var(--danger-bg);
+  border-color: #f1c1c1;
+}
+
+.status-banner--error .icon {
+  color: var(--danger);
+}
+
+.menu__hello {
+  padding: 10px 12px 6px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  color: var(--navy-800);
+}
+
+.badge--now {
+  color: #7a4a00;
+  background: #ffe7bf;
+}
+
+.activity-empty {
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  list-style: none;
+  background: var(--bg);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-md);
+}

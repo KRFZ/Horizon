@@ -1536,3 +1536,107 @@
 .trip-card__body .badge {
   align-self: flex-start;
 }
+
+/* ==========================================================================
+   TERCER CORTE: elementos de las pantallas conectadas a las APIs
+   ========================================================================== */
+.login-welcome {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.login-welcome[hidden],
+#login-panel[hidden] {
+  display: none;
+}
+
+.hub-card__count {
+  display: inline-flex;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy-700);
+  background: var(--sky-100);
+  border-radius: var(--r-pill);
+}
+
+.trip-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.trip-card__link:hover {
+  color: var(--teal-700);
+}
+
+.detail-loading {
+  display: grid;
+  gap: var(--space-4);
+  padding-block: var(--space-7);
+}
+
+/* Consulta de otra ciudad */
+.city-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+
+.city-search .field {
+  flex: 1 1 260px;
+}
+
+.city-search__msg {
+  flex-basis: 100%;
+  min-height: 1.2em;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+.weather.is-loading .weather-now,
+.weather.is-loading .stat {
+  opacity: 0.45;
+  filter: grayscale(0.4);
+}
+
+.forecast .status-banner {
+  grid-column: 1 / -1;
+}
+
+/* Mapa incrustado */
+.map-visual iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Formulario de lugares */
+.place-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.7fr) minmax(0, 1.4fr) auto;
+  align-items: end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.place-form .btn {
+  min-height: 48px;
+}
+
+.place-card .btn[aria-pressed="true"] {
+  color: #fff;
+}
+
+#detail-status:not(:empty) {
+  padding-top: 24px;
+}

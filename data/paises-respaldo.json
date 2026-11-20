@@ -1,0 +1,514 @@
+[
+ {
+  "code": "ES",
+  "name": "España",
+  "nameEn": "Spain",
+  "official": "Reino de España",
+  "capital": "Madrid",
+  "capitalEn": "Madrid",
+  "region": "Europa",
+  "regionEn": "Europe",
+  "subregion": "Europa meridional",
+  "population": 47400000,
+  "area": 505992,
+  "languages": [
+   "Español"
+  ],
+  "currencies": [
+   {
+    "code": "EUR",
+    "name": "Euro",
+    "symbol": "€"
+   }
+  ],
+  "flag": "assets/flags/es.svg",
+  "flagAlt": "Bandera de España",
+  "latlng": [
+   40.4168,
+   -3.7038
+  ],
+  "timezones": [
+   "UTC+01:00"
+  ],
+  "tld": ".es",
+  "callingCode": "+34"
+ },
+ {
+  "code": "JP",
+  "name": "Japón",
+  "nameEn": "Japan",
+  "official": "Japón",
+  "capital": "Tokio",
+  "capitalEn": "Tokyo",
+  "region": "Asia",
+  "regionEn": "Asia",
+  "subregion": "Asia oriental",
+  "population": 125700000,
+  "area": 377930,
+  "languages": [
+   "Japonés"
+  ],
+  "currencies": [
+   {
+    "code": "JPY",
+    "name": "Yen",
+    "symbol": "¥"
+   }
+  ],
+  "flag": "assets/flags/jp.svg",
+  "flagAlt": "Bandera de Japón",
+  "latlng": [
+   35.6762,
+   139.6503
+  ],
+  "timezones": [
+   "UTC+09:00"
+  ],
+  "tld": ".jp",
+  "callingCode": "+81"
+ },
+ {
+  "code": "IT",
+  "name": "Italia",
+  "nameEn": "Italy",
+  "official": "República Italiana",
+  "capital": "Roma",
+  "capitalEn": "Rome",
+  "region": "Europa",
+  "regionEn": "Europe",
+  "subregion": "Europa meridional",
+  "population": 58900000,
+  "area": 301336,
+  "languages": [
+   "Italiano"
+  ],
+  "currencies": [
+   {
+    "code": "EUR",
+    "name": "Euro",
+    "symbol": "€"
+   }
+  ],
+  "flag": "assets/flags/it.svg",
+  "flagAlt": "Bandera de Italia",
+  "latlng": [
+   41.9028,
+   12.4964
+  ],
+  "timezones": [
+   "UTC+01:00"
+  ],
+  "tld": ".it",
+  "callingCode": "+39"
+ },
+ {
+  "code": "CO",
+  "name": "Colombia",
+  "nameEn": "Colombia",
+  "official": "República de Colombia",
+  "capital": "Bogotá",
+  "capitalEn": "Bogotá",
+  "region": "Américas",
+  "regionEn": "Americas",
+  "subregion": "Sudamérica",
+  "population": 52100000,
+  "area": 1141748,
+  "languages": [
+   "Español"
+  ],
+  "currencies": [
+   {
+    "code": "COP",
+    "name": "Peso colombiano",
+    "symbol": "$"
+   }
+  ],
+  "flag": "assets/flags/co.svg",
+  "flagAlt": "Bandera de Colombia",
+  "latlng": [
+   4.711,
+   -74.0721
+  ],
+  "timezones": [
+   "UTC-05:00"
+  ],
+  "tld": ".co",
+  "callingCode": "+57"
+ },
+ {
+  "code": "CA",
+  "name": "Canadá",
+  "nameEn": "Canada",
+  "official": "Canadá",
+  "capital": "Ottawa",
+  "capitalEn": "Ottawa",
+  "region": "Américas",
+  "regionEn": "Americas",
+  "subregion": "Norteamérica",
+  "population": 38900000,
+  "area": 9984670,
+  "languages": [
+   "Inglés",
+   "Francés"
+  ],
+  "currencies": [
+   {
+    "code": "CAD",
+    "name": "Dólar canadiense",
+    "symbol": "$"
+   }
+  ],
+  "flag": "assets/flags/ca.svg",
+  "flagAlt": "Bandera de Canadá",
+  "latlng": [
+   45.4215,
+   -75.6972
+  ],
+  "timezones": [
+   "UTC-05:00"
+  ],
+  "tld": ".ca",
+  "callingCode": "+1"
+ },
+ {
+  "code": "FR",
+  "name": "Francia",
+  "nameEn": "France",
+  "official": "República Francesa",
+  "capital": "París",
+  "capitalEn": "Paris",
+  "region": "Europa",
+  "regionEn": "Europe",
+  "subregion": "Europa occidental",
+  "population": 68000000,
+  "area": 551695,
+  "languages": [
+   "Francés"
+  ],
+  "currencies": [
+   {
+    "code": "EUR",
+    "name": "Euro",
+    "symbol": "€"
+   }
+  ],
+  "flag": "assets/flags/fr.svg",
+  "flagAlt": "Bandera de Francia",
+  "latlng": [
+   48.8566,
+   2.3522
+  ],
+  "timezones": [
+   "UTC+01:00"
+  ],
+  "tld": ".fr",
+  "callingCode": "+33"
+ },
+ {
+  "code": "MX",
+  "name": "México",
+  "nameEn": "Mexico",
+  "official": "Estados Unidos Mexicanos",
+  "capital": "Ciudad de México",
+  "capitalEn": "Mexico City",
+  "region": "Américas",
+  "regionEn": "Americas",
+  "subregion": "Norteamérica",
+  "population": 128900000,
+  "area": 1964375,
+  "languages": [
+   "Español"
+  ],
+  "currencies": [
+   {
+    "code": "MXN",
+    "name": "Peso mexicano",
+    "symbol": "$"
+   }
+  ],
+  "flag": "assets/flags/mx.svg",
+  "flagAlt": "Bandera de México",
+  "latlng": [
+   19.4326,
+   -99.1332
+  ],
+  "timezones": [
+   "UTC-06:00"
+  ],
+  "tld": ".mx",
+  "callingCode": "+52"
+ },
+ {
+  "code": "BR",
+  "name": "Brasil",
+  "nameEn": "Brazil",
+  "official": "República Federativa del Brasil",
+  "capital": "Brasilia",
+  "capitalEn": "Brasília",
+  "region": "Américas",
+  "regionEn": "Americas",
+  "subregion": "Sudamérica",
+  "population": 213400000,
+  "area": 8515767,
+  "languages": [
+   "Portugués"
+  ],
+  "currencies": [
+   {
+    "code": "BRL",
+    "name": "Real brasileño",
+    "symbol": "R$"
+   }
+  ],
+  "flag": "assets/flags/br.svg",
+  "flagAlt": "Bandera de Brasil",
+  "latlng": [
+   -15.7939,
+   -47.8828
+  ],
+  "timezones": [
+   "UTC-03:00"
+  ],
+  "tld": ".br",
+  "callingCode": "+55"
+ },
+ {
+  "code": "AR",
+  "name": "Argentina",
+  "nameEn": "Argentina",
+  "official": "República Argentina",
+  "capital": "Buenos Aires",
+  "capitalEn": "Buenos Aires",
+  "region": "Américas",
+  "regionEn": "Americas",
+  "subregion": "Sudamérica",
+  "population": 45800000,
+  "area": 2780400,
+  "languages": [
+   "Español"
+  ],
+  "currencies": [
+   {
+    "code": "ARS",
+    "name": "Peso argentino",
+    "symbol": "$"
+   }
+  ],
+  "flag": "assets/flags/ar.svg",
+  "flagAlt": "Bandera de Argentina",
+  "latlng": [
+   -34.6037,
+   -58.3816
+  ],
+  "timezones": [
+   "UTC-03:00"
+  ],
+  "tld": ".ar",
+  "callingCode": "+54"
+ },
+ {
+  "code": "PE",
+  "name": "Perú",
+  "nameEn": "Peru",
+  "official": "República del Perú",
+  "capital": "Lima",
+  "capitalEn": "Lima",
+  "region": "Américas",
+  "regionEn": "Americas",
+  "subregion": "Sudamérica",
+  "population": 33700000,
+  "area": 1285216,
+  "languages": [
+   "Español",
+   "Quechua"
+  ],
+  "currencies": [
+   {
+    "code": "PEN",
+    "name": "Sol peruano",
+    "symbol": "S/"
+   }
+  ],
+  "flag": "assets/flags/pe.svg",
+  "flagAlt": "Bandera de Perú",
+  "latlng": [
+   -12.0464,
+   -77.0428
+  ],
+  "timezones": [
+   "UTC-05:00"
+  ],
+  "tld": ".pe",
+  "callingCode": "+51"
+ },
+ {
+  "code": "PT",
+  "name": "Portugal",
+  "nameEn": "Portugal",
+  "official": "República Portuguesa",
+  "capital": "Lisboa",
+  "capitalEn": "Lisbon",
+  "region": "Europa",
+  "regionEn": "Europe",
+  "subregion": "Europa meridional",
+  "population": 10300000,
+  "area": 92090,
+  "languages": [
+   "Portugués"
+  ],
+  "currencies": [
+   {
+    "code": "EUR",
+    "name": "Euro",
+    "symbol": "€"
+   }
+  ],
+  "flag": "assets/flags/pt.svg",
+  "flagAlt": "Bandera de Portugal",
+  "latlng": [
+   38.7223,
+   -9.1393
+  ],
+  "timezones": [
+   "UTC+00:00"
+  ],
+  "tld": ".pt",
+  "callingCode": "+351"
+ },
+ {
+  "code": "DE",
+  "name": "Alemania",
+  "nameEn": "Germany",
+  "official": "República Federal de Alemania",
+  "capital": "Berlín",
+  "capitalEn": "Berlin",
+  "region": "Europa",
+  "regionEn": "Europe",
+  "subregion": "Europa occidental",
+  "population": 83200000,
+  "area": 357114,
+  "languages": [
+   "Alemán"
+  ],
+  "currencies": [
+   {
+    "code": "EUR",
+    "name": "Euro",
+    "symbol": "€"
+   }
+  ],
+  "flag": "assets/flags/de.svg",
+  "flagAlt": "Bandera de Alemania",
+  "latlng": [
+   52.52,
+   13.405
+  ],
+  "timezones": [
+   "UTC+01:00"
+  ],
+  "tld": ".de",
+  "callingCode": "+49"
+ },
+ {
+  "code": "CL",
+  "name": "Chile",
+  "nameEn": "Chile",
+  "official": "República de Chile",
+  "capital": "Santiago",
+  "capitalEn": "Santiago",
+  "region": "Américas",
+  "regionEn": "Americas",
+  "subregion": "Sudamérica",
+  "population": 19500000,
+  "area": 756102,
+  "languages": [
+   "Español"
+  ],
+  "currencies": [
+   {
+    "code": "CLP",
+    "name": "Peso chileno",
+    "symbol": "$"
+   }
+  ],
+  "flag": "assets/flags/cl.svg",
+  "flagAlt": "Bandera de Chile",
+  "latlng": [
+   -33.4489,
+   -70.6693
+  ],
+  "timezones": [
+   "UTC-04:00"
+  ],
+  "tld": ".cl",
+  "callingCode": "+56"
+ },
+ {
+  "code": "TH",
+  "name": "Tailandia",
+  "nameEn": "Thailand",
+  "official": "Reino de Tailandia",
+  "capital": "Bangkok",
+  "capitalEn": "Bangkok",
+  "region": "Asia",
+  "regionEn": "Asia",
+  "subregion": "Sudeste asiático",
+  "population": 71800000,
+  "area": 513120,
+  "languages": [
+   "Tailandés"
+  ],
+  "currencies": [
+   {
+    "code": "THB",
+    "name": "Baht tailandés",
+    "symbol": "฿"
+   }
+  ],
+  "flag": "assets/flags/th.svg",
+  "flagAlt": "Bandera de Tailandia",
+  "latlng": [
+   13.7563,
+   100.5018
+  ],
+  "timezones": [
+   "UTC+07:00"
+  ],
+  "tld": ".th",
+  "callingCode": "+66"
+ },
+ {
+  "code": "MA",
+  "name": "Marruecos",
+  "nameEn": "Morocco",
+  "official": "Reino de Marruecos",
+  "capital": "Rabat",
+  "capitalEn": "Rabat",
+  "region": "África",
+  "regionEn": "Africa",
+  "subregion": "Norte de África",
+  "population": 37100000,
+  "area": 446550,
+  "languages": [
+   "Árabe"
+  ],
+  "currencies": [
+   {
+    "code": "MAD",
+    "name": "Dírham marroquí",
+    "symbol": "د.م."
+   }
+  ],
+  "flag": "assets/flags/ma.svg",
+  "flagAlt": "Bandera de Marruecos",
+  "latlng": [
+   34.0209,
+   -6.8416
+  ],
+  "timezones": [
+   "UTC+01:00"
+  ],
+  "tld": ".ma",
+  "callingCode": "+212"
+ }
+]

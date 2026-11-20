@@ -97,6 +97,11 @@ main {
   flex: 1 0 auto;
 }
 
+/* El atributo hidden siempre debe ocultar, aunque el elemento tenga display propio */
+[hidden] {
+  display: none !important;
+}
+
 img,
 svg,
 video {
